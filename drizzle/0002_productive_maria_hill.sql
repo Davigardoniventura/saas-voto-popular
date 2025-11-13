@@ -1,0 +1,1 @@
+ALTER TABLE `users` MODIFY COLUMN `cpf` varchar(11) NOT NULL DEFAULT '';
