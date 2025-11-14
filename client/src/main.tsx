@@ -40,10 +40,7 @@ queryClient.getMutationCache().subscribe(event => {
 
 // Helper para obter a URL da API
 const getApiUrl = () => {
-  const viteApiUrl = import.meta.env.VITE_API_URL;
-  if (viteApiUrl && viteApiUrl.trim() !== '') {
-    return `${viteApiUrl}/api/trpc`;
-  }
+  // Sempre usar a origem atual para evitar problemas com variáveis de ambiente
   return `${window.location.origin}/api/trpc`;
 };
 
