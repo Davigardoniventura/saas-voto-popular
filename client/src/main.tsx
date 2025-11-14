@@ -41,7 +41,7 @@ queryClient.getMutationCache().subscribe(event => {
 const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
-      url: `${import.meta.env.VITE_API_URL || ''}/api/trpc`,
+      url: `${import.meta.env.VITE_API_URL || window.location.origin}/api/trpc`,
       transformer: superjson,
       async headers() {
         // Obter token do Firebase
