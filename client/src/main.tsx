@@ -38,10 +38,19 @@ queryClient.getMutationCache().subscribe(event => {
   }
 });
 
+// Helper para obter a URL da API
+const getApiUrl = () => {
+  const viteApiUrl = import.meta.env.VITE_API_URL;
+  if (viteApiUrl && viteApiUrl.trim() !== '') {
+    return `${viteApiUrl}/api/trpc`;
+  }
+  return `${window.location.origin}/api/trpc`;
+};
+
 const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
-      url: `${import.meta.env.VITE_API_URL || window.location.origin}/api/trpc`,
+      url: getApiUrl(),
       transformer: superjson,
       async headers() {
         // Obter token do Firebase
